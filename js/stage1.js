@@ -6,7 +6,7 @@ function startStage1() {
 
     let correctSelected = 0;
     let wrongSelected = 0;
-    let timeLeft = 15;
+    let timeLeft = 50;
 
 
     const devices = [
