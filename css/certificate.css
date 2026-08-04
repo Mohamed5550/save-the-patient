@@ -1,6 +1,8 @@
 .certificate{
 
-    width:min(90%,800px);
+    width:100%;
+
+    max-width:800px;
 
     background:
     linear-gradient(

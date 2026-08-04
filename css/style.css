@@ -183,3 +183,290 @@ button:hover{
     background-position:center;
 
 }
+
+
+/* Mobile Responsive */
+
+@media (max-width: 600px){
+
+
+    .screen{
+
+        padding:20px 12px;
+
+    }
+
+
+
+    #hud{
+
+        padding:15px;
+
+        border-radius:12px;
+
+        margin-bottom:15px;
+
+    }
+
+
+
+    .hud-top{
+
+        font-size:14px;
+
+        margin-bottom:12px;
+
+    }
+
+
+
+    .hud-info{
+
+        font-size:13px;
+
+    }
+
+
+
+
+    .card{
+
+        width:100%;
+
+        padding:20px;
+
+        border-radius:15px;
+
+    }
+
+
+
+    h1{
+
+        font-size:28px;
+
+    }
+
+
+
+    h2{
+
+        font-size:22px;
+
+    }
+
+
+
+    h3{
+
+        font-size:18px;
+
+    }
+
+
+
+
+    p{
+
+        font-size:15px;
+
+    }
+
+
+
+
+
+    /* Intro */
+
+
+    .alert-box{
+
+        padding:25px 18px;
+
+    }
+
+
+
+    .alert-box h1{
+
+        font-size:38px;
+
+        letter-spacing:3px;
+
+    }
+
+
+
+    .alert-icon{
+
+        font-size:45px;
+
+    }
+
+
+
+
+
+    /* Stage 1 */
+
+
+    .devices-grid{
+
+        grid-template-columns:1fr;
+
+        gap:12px;
+
+    }
+
+
+
+    .device-card{
+
+        padding:18px;
+
+    }
+
+
+
+
+
+
+    /* ECG */
+
+
+    .monitor{
+
+        padding:15px;
+
+    }
+
+
+
+    .ecg-info{
+
+        flex-direction:column;
+
+        gap:10px;
+
+        font-size:15px;
+
+    }
+
+
+
+    .ecg-wave{
+
+        height:100px;
+
+    }
+
+
+
+
+
+
+    /* Stage 3 */
+
+
+    .repair-container{
+
+        flex-direction:column;
+
+        gap:20px;
+
+    }
+
+
+
+    .wire-panel,
+    .port-panel{
+
+        width:100%;
+
+    }
+
+
+
+    .wire,
+    .port{
+
+        padding:15px;
+
+        text-align:center;
+
+    }
+
+
+
+
+
+
+    /* Stage 4 */
+
+
+    .heart-monitor{
+
+        font-size:45px;
+
+        padding:20px;
+
+    }
+
+
+
+    #compression-btn,
+    #charge-btn,
+    #shock-btn{
+
+        width:100%;
+
+        padding:15px;
+
+    }
+
+
+
+
+
+
+
+    /* Certificate */
+
+
+    .certificate{
+
+        padding:25px 15px;
+
+        border-width:3px;
+
+    }
+
+
+
+    .certificate-header h1{
+
+        font-size:38px;
+
+    }
+
+
+
+    .certificate .name{
+
+        font-size:32px;
+
+    }
+
+
+
+    .achievements{
+
+        padding:15px;
+
+        font-size:14px;
+
+    }
+
+
+
+}
