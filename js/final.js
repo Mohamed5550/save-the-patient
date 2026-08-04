@@ -7,6 +7,19 @@ function showVictory(){
 
 
 
+    const missionDate =
+        new Date()
+        .toLocaleDateString(
+            "en-US",
+            {
+                day:"2-digit",
+                month:"long",
+                year:"numeric"
+            }
+        );
+
+
+
     stageContent.innerHTML = `
 
 
@@ -15,17 +28,29 @@ function showVictory(){
 
         <div class="certificate-header">
 
+
             🏆
+
 
             <h1>
                 CODE BLUE
             </h1>
 
+
             <h2>
                 Emergency Response Simulation
             </h2>
 
+
+            <p>
+                Mansoura Medical Center
+                <br>
+                Emergency Department
+            </p>
+
+
         </div>
+
 
 
 
@@ -34,8 +59,18 @@ function showVictory(){
 
 
             <p>
-                This certificate is proudly presented to
+
+                Mission Completion Certificate
+
             </p>
+
+
+            <p>
+
+                Awarded to
+
+            </p>
+
 
 
             <h1 class="name">
@@ -45,6 +80,7 @@ function showVictory(){
             </h1>
 
 
+
             <p>
 
                 For successfully completing the
@@ -52,21 +88,26 @@ function showVictory(){
             </p>
 
 
+
             <h2>
 
-                Biomedical Emergency Mission
+                Biomedical Emergency Response Simulation
 
             </h2>
 
 
+
             <br>
+
+
+
 
 
             <div class="achievements">
 
 
                 <div>
-                    ✅ Resuscitation Room Prepared
+                    ✅ Emergency Room Prepared
                 </div>
 
 
@@ -89,13 +130,17 @@ function showVictory(){
 
 
 
+
             <br>
+
 
 
 
             <h3>
 
-                Biomedical Emergency Specialist
+                Biomedical Engineer
+                <br>
+                Emergency Response Training
 
             </h3>
 
@@ -106,23 +151,33 @@ function showVictory(){
 
 
 
+
         <div class="certificate-footer">
 
 
             <p>
+
                 Mission Status:
+
                 <strong>
+
                     COMPLETED
+
                 </strong>
+
             </p>
 
 
+
             <p>
-                04 August 2026
+
+                ${missionDate}
+
             </p>
 
 
         </div>
+
 
 
 
@@ -143,7 +198,9 @@ function showVictory(){
 
 
 
-    playSound("success");
+    playSound(
+        "success"
+    );
 
 
 }
