@@ -508,6 +508,30 @@
 
     margin-top:30px;
 
+    flex-wrap:wrap;
+
+}
+
+@media(max-width:600px){
+
+
+    .defibrillator{
+
+        width:100%;
+
+        overflow:hidden;
+
+    }
+
+
+
+    .ports{
+
+        width:100%;
+
+    }
+
+
 }
 
 
@@ -678,5 +702,81 @@
 .defib-line span.ready{
 
     color:#22c55e;
+
+}
+
+.repair-mobile-layout{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:40px;
+
+    margin-top:30px;
+
+}
+
+
+.repair-mobile-layout button{
+
+    width:220px;
+
+    background:#1e293b;
+
+    color:white;
+
+    border:1px solid #475569;
+
+}
+
+
+
+.wire.selected{
+
+    background:#2563eb;
+
+}
+
+
+
+.wire.connected{
+
+    opacity:.4;
+
+}
+
+
+
+.port.connected{
+
+    background:#14532d;
+
+}
+
+
+
+
+@media(max-width:600px){
+
+
+    .repair-mobile-layout{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        align-items:center;
+
+    }
+
+
+
+    .repair-mobile-layout button{
+
+        width:100%;
+
+    }
+
 
 }

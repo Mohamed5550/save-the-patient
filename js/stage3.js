@@ -8,31 +8,34 @@ function startStage3() {
 
     let connected = 0;
 
+    let selectedWire = null;
+
+
 
     const wires = [
 
         {
-            name:"🔴 Power Cable",
-            color:"red",
-            module:"POWER MODULE"
+            id:"red",
+            name:"🔴 Power Lead",
+            port:"POWER PORT"
         },
 
         {
-            name:"🔵 ECG Cable",
-            color:"blue",
-            module:"ECG MONITOR"
+            id:"blue",
+            name:"🔵 ECG Lead",
+            port:"ECG PORT"
         },
 
         {
-            name:"🟡 Charging Cable",
-            color:"yellow",
-            module:"CHARGING SYSTEM"
+            id:"yellow",
+            name:"🟡 Charging Lead",
+            port:"CHARGE PORT"
         },
 
         {
-            name:"🟢 Patient Pads Cable",
-            color:"green",
-            module:"PATIENT PADS"
+            id:"green",
+            name:"🟢 Safety Lead",
+            port:"SAFETY PORT"
         }
 
     ];
@@ -45,7 +48,6 @@ function startStage3() {
 
     stageContent.innerHTML = `
 
-
     <div class="card repair-stage">
 
 
@@ -54,156 +56,138 @@ function startStage3() {
         </h1>
 
 
-
         <p class="stage-description">
 
-            The defibrillator failed during emergency response.
-            Restore all hardware connections.
+            The defibrillator system has failed.
+            Connect all cables to restore the device.
 
         </p>
 
 
 
-        <div class="defibrillator">
+
+        <div class="defib-device">
 
 
-            <div class="defib-screen">
+            <h2>
+                ⚡ DEFIBRILLATOR
+            </h2>
 
 
-                <h2>
-                    DEFIBRILLATOR
-                </h2>
+            <div class="device-status">
 
+                STATUS:
+                <span id="defib-status">
 
-                <div id="defib-status">
+                    ERROR ❌
 
-                    SYSTEM ERROR ❌
-
-                </div>
-
-
-
-                <div class="defib-line">
-
-                    POWER MODULE:
-
-                    <span>
-                        DISCONNECTED
-                    </span>
-
-                </div>
-
-
-                <div class="defib-line">
-
-                    CHARGING:
-
-                    <span>
-                        OFF
-                    </span>
-
-                </div>
-
-
-                <div class="defib-line">
-
-                    PATIENT CONNECTION:
-
-                    <span>
-                        FAILED
-                    </span>
-
-                </div>
-
-
-            </div>
-
-
-
-            <div class="ports">
-
-
-                <div class="port"
-                    data-color="red">
-
-                    POWER
-
-                </div>
-
-
-                <div class="port"
-                    data-color="blue">
-
-                    ECG
-
-                </div>
-
-
-                <div class="port"
-                    data-color="yellow">
-
-                    CHARGE
-
-                </div>
-
-
-                <div class="port"
-                    data-color="green">
-
-                    PADS
-
-                </div>
-
+                </span>
 
             </div>
 
 
         </div>
+
+
 
 
 
         <h3>
-            Connect damaged cables:
+
+            Select a cable then select its port
+
         </h3>
 
 
 
-        <p class="drag-hint">
 
-            🖱️ Touch and drag each cable to the matching port
-
-        </p>
+        <div class="repair-mobile-layout">
 
 
 
-        <div class="wire-panel">
+            <div class="wire-panel">
 
 
-            ${
-                wires.map(wire=>`
+                ${wires.map(wire=>`
 
-                <div
+                    <button
 
-                    class="wire ${wire.color}"
+                        class="wire"
 
-                    data-color="${wire.color}">
+                        data-wire="${wire.id}">
 
+                        ${wire.name}
 
-                    ${wire.name}
-
-
-                    <small>
-                        ${wire.module}
-                    </small>
+                    </button>
 
 
-                </div>
+                `).join("")}
 
-                `).join("")
-            }
+
+
+            </div>
+
+
+
+
+
+            <div class="port-panel">
+
+
+                <button
+
+                    class="port"
+
+                    data-port="red">
+
+                    POWER PORT
+
+                </button>
+
+
+
+                <button
+
+                    class="port"
+
+                    data-port="blue">
+
+                    ECG PORT
+
+                </button>
+
+
+
+                <button
+
+                    class="port"
+
+                    data-port="yellow">
+
+                    CHARGE PORT
+
+                </button>
+
+
+
+                <button
+
+                    class="port"
+
+                    data-port="green">
+
+                    SAFETY PORT
+
+                </button>
+
+
+
+            </div>
+
 
 
         </div>
+
 
 
 
@@ -212,7 +196,7 @@ function startStage3() {
             id="repair-status"
             class="status-box">
 
-            Waiting for connections...
+            Select a cable
 
         </div>
 
@@ -220,18 +204,15 @@ function startStage3() {
 
     </div>
 
-
     `;
 
 
 
-    let activeWire = null;
 
-
-
-    let offsetX = 0;
-
-    let offsetY = 0;
+    const status =
+        document.getElementById(
+            "repair-status"
+        );
 
 
 
@@ -242,10 +223,43 @@ function startStage3() {
     .forEach(wire=>{
 
 
-        wire.addEventListener(
-            "pointerdown",
-            startDrag
-        );
+        wire.onclick = ()=>{
+
+
+            if(
+                wire.classList.contains(
+                    "connected"
+                )
+            ){
+                return;
+            }
+
+
+
+            document
+            .querySelectorAll(".wire")
+            .forEach(w=>
+                w.classList.remove(
+                    "selected"
+                )
+            );
+
+
+
+            wire.classList.add(
+                "selected"
+            );
+
+
+            selectedWire =
+                wire.dataset.wire;
+
+
+
+            status.textContent =
+                "Now select the matching port";
+
+        };
 
 
     });
@@ -255,249 +269,128 @@ function startStage3() {
 
 
 
-    function startDrag(e){
 
+    document
+    .querySelectorAll(".port")
+    .forEach(port=>{
 
-        activeWire = e.currentTarget;
 
+        port.onclick = ()=>{
 
-        activeWire.classList.add(
-            "dragging"
-        );
 
+            if(!selectedWire){
 
-        activeWire.setPointerCapture(
-            e.pointerId
-        );
+                status.textContent =
+                "Select a cable first";
 
-
-
-        const rect =
-            activeWire.getBoundingClientRect();
-
-
-
-        offsetX =
-            e.clientX - rect.left;
-
-
-        offsetY =
-            e.clientY - rect.top;
-
-
-        activeWire.style.position =
-            "fixed";
-
-
-        moveWire(e);
-
-
-        activeWire.addEventListener(
-            "pointermove",
-            moveWire
-        );
-
-
-        activeWire.addEventListener(
-            "pointerup",
-            endDrag
-        );
-
-
-    }
-
-
-
-
-
-
-    function moveWire(e){
-
-
-        if(!activeWire){
-
-            return;
-
-        }
-
-
-
-        activeWire.style.left =
-            (
-                e.clientX - offsetX
-            )
-            +
-            "px";
-
-
-
-        activeWire.style.top =
-            (
-                e.clientY - offsetY
-            )
-            +
-            "px";
-
-
-        activeWire.style.zIndex =
-            "1000";
-
-
-    }
-
-
-
-
-
-
-
-    function endDrag(e){
-
-
-        if(!activeWire){
-
-            return;
-
-        }
-
-
-
-        const droppedPort =
-            getTargetPort(
-                e.clientX,
-                e.clientY
-            );
-
-
-
-        if(
-            droppedPort &&
-            droppedPort.dataset.color ===
-            activeWire.dataset.color
-        ){
-
-
-            droppedPort.classList.add(
-                "connected"
-            );
-
-
-            droppedPort.innerHTML =
-                "✅ CONNECTED";
-
-
-
-            activeWire.classList.add(
-                "used"
-            );
-
-
-            activeWire.style.display =
-                "none";
-
-
-
-            connected++;
-
-
-
-            document
-            .getElementById(
-                "repair-status"
-            )
-            .textContent =
-            `${connected}/4 systems restored`;
-
-
-
-            playSound(
-                "success"
-            );
-
-
-
-            if(
-                connected === 4
-            ){
-
-                activateDefib();
+                return;
 
             }
 
 
 
-        }
-        else{
 
+            if(
+                port.classList.contains(
+                    "connected"
+                )
+            ){
 
-            activeWire.style.position =
-                "";
+                return;
 
-
-            activeWire.style.left =
-                "";
-
-
-            activeWire.style.top =
-                "";
-
-
-            playSound(
-                "failure"
-            );
-
-
-        }
-
-
-
-        activeWire.classList.remove(
-            "dragging"
-        );
-
-
-        activeWire.releasePointerCapture(
-            e.pointerId
-        );
-
-
-        activeWire.removeEventListener(
-            "pointermove",
-            moveWire
-        );
-
-
-        activeWire = null;
-
-
-    }
+            }
 
 
 
 
+            if(
+                selectedWire ===
+                port.dataset.port
+            ){
 
 
-    function getTargetPort(x,y){
+                port.classList.add(
+                    "connected"
+                );
 
 
-        const ports =
-            document
-            .elementsFromPoint(
-                x,
-                y
-            );
+                port.innerHTML =
+                "✅ CONNECTED";
 
 
 
-        return ports.find(
-            element =>
-            element.classList.contains(
-                "port"
-            )
-        );
+                const wire =
+                    document.querySelector(
+                        `.wire[data-wire="${selectedWire}"]`
+                    );
 
 
-    }
+
+                wire.classList.add(
+                    "connected"
+                );
+
+
+
+                wire.disabled = true;
+
+
+
+                connected++;
+
+
+
+                playSound(
+                    "success"
+                );
+
+
+
+                status.textContent =
+                `${connected}/4 connections completed`;
+
+
+
+                selectedWire = null;
+
+
+
+
+                if(
+                    connected === 4
+                ){
+
+
+                    runDiagnostic();
+
+
+                }
+
+
+
+            }
+            else{
+
+
+                playSound(
+                    "failure"
+                );
+
+
+                gameOver(
+                    "Wrong connection detected.<br><br>Hardware failure."
+                );
+
+
+            }
+
+
+
+        };
+
+
+    });
+
 
 
 }
@@ -506,92 +399,89 @@ function startStage3() {
 
 
 
+function runDiagnostic(){
 
 
-function activateDefib(){
+    stageContent.innerHTML = `
+
+    <div class="card">
 
 
-    const status =
-    document.getElementById(
-        "defib-status"
+        <h1>
+            🔍 System Diagnostic
+        </h1>
+
+
+        <br>
+
+
+        <p>
+            Checking Power Module...
+            ✅
+        </p>
+
+
+        <p>
+            Checking Charging Circuit...
+            ✅
+        </p>
+
+
+        <p>
+            Checking Patient Pads...
+            ✅
+        </p>
+
+
+        <br>
+
+
+        <h2>
+            Defibrillator Ready ⚡
+        </h2>
+
+
+    </div>
+
+    `;
+
+
+
+    playSound(
+        "success"
     );
-
-
-
-    status.innerHTML =
-    "SYSTEM REPAIRING... ⚙️";
 
 
 
     setTimeout(()=>{
 
 
-        status.innerHTML =
-        "ONLINE ✅";
+        transition(
+
+            "⚡ Defibrillator Online",
+
+            "Emergency shock system ready. Patient requires immediate intervention.",
+
+            ()=>{
 
 
-
-        document
-        .querySelectorAll(
-            ".defib-line span"
-        )
-        .forEach(item=>{
+                updatePatientState(
+                    "improving"
+                );
 
 
-            item.textContent =
-            "READY";
+                completedStage = 3;
 
 
-            item.classList.add(
-                "ready"
-            );
+                stageCompleted();
 
 
-        });
+            }
 
-
-
-        playSound(
-            "success"
         );
 
 
-
-        setTimeout(()=>{
-
-
-            transition(
-
-                "⚡ Defibrillator Online",
-
-                "Emergency shock system ready. Patient requires immediate intervention.",
-
-
-                ()=>{
-
-
-                    updatePatientState(
-                        "improving"
-                    );
-
-
-                    completedStage = 3;
-
-
-                    stageCompleted();
-
-
-                }
-
-            );
-
-
-        },1500);
-
-
-
     },2000);
-
 
 
 }
