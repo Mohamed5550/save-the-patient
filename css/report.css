@@ -1,0 +1,119 @@
+.mission-report{
+
+    animation:
+    certificateAppear .5s;
+
+    text-align:center;
+
+}
+
+
+
+.report-header h1{
+
+    color:#38bdf8;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.report-header p{
+
+    color:#cbd5e1;
+
+}
+
+
+
+.report-section{
+
+    margin-top:30px;
+
+    background:#020617;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    border:
+    1px solid #334155;
+
+    text-align:left;
+
+}
+
+
+
+.report-section h2{
+
+    color:#facc15;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.report-section p{
+
+    margin:10px 0;
+
+}
+
+
+
+.stable{
+
+    color:#22c55e;
+
+}
+
+
+
+.report-item{
+
+    padding:10px;
+
+    color:#22c55e;
+
+    font-size:17px;
+
+}
+
+
+
+.performance{
+
+    margin-top:30px;
+
+    padding:20px;
+
+    background:#111827;
+
+    border-radius:15px;
+
+}
+
+
+
+.stars{
+
+    font-size:35px;
+
+    margin:15px;
+
+}
+
+
+
+#certificate-btn{
+
+    margin-top:30px;
+
+    background:#2563eb;
+
+    color:white;
+
+}

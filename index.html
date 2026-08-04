@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Code Blue: Operation Mariam
+    </title>
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/intro.css">
+    <link rel="stylesheet" href="css/stages.css">
+    <link rel="stylesheet" href="css/certificate.css">
+    <link rel="stylesheet" href="css/hud.css">
+    <link rel="stylesheet" href="css/ecg.css">
+    <link rel="stylesheet" href="css/stage4.css">
+    <link rel="stylesheet" href="css/report.css">
+
+</head>
+
+
+<body>
+
+
+<div id="app">
+
+
+    <div id="intro-screen" class="screen active intro">
+
+
+        <div class="alert-box">
+
+
+            <div class="alert-icon">
+                🚨
+            </div>
+
+
+            <h1>
+                CODE BLUE
+            </h1>
+
+
+            <h3>
+                EMERGENCY ALERT
+            </h3>
+
+
+
+            <div class="mission-info">
+
+
+                <p>
+                    📍 Location:
+                    <strong>
+                        Mansoura Medical Center
+                    </strong>
+                </p>
+
+
+                <p>
+                    🕒 Time:
+                    <strong>
+                        02:13 AM
+                    </strong>
+                </p>
+
+
+                <p>
+                    ❤️ Patient Status:
+                    <strong class="critical">
+                        CRITICAL
+                    </strong>
+                </p>
+
+
+            </div>
+
+
+
+
+            <hr>
+
+
+
+            <p>
+                Response Specialist Assigned:
+            </p>
+
+
+            <h2>
+                Mariam Hegazy
+            </h2>
+
+
+            <p class="role">
+
+                Biomedical Emergency Specialist
+
+            </p>
+
+
+
+            <p class="message">
+
+                A critical patient has arrived.
+                The emergency team is waiting.
+
+            </p>
+
+
+
+
+            <button id="start-btn">
+
+                ▶ Accept Emergency Call
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div id="game-screen" class="screen">
+
+
+        <div id="hud">
+
+
+            <div class="hud-top">
+
+
+                <div>
+                    🚨 CODE BLUE
+                </div>
+
+
+                <div>
+                    Mariam Hegazy
+                </div>
+
+
+            </div>
+
+
+
+            <div class="hud-info">
+
+
+                <span id="hud-stage">
+                    Stage 1
+                </span>
+
+
+                <span id="hud-patient">
+                    ❤️ Critical
+                </span>
+
+
+            </div>
+
+
+
+            <div class="progress-container">
+
+                <div id="progress-bar"></div>
+
+            </div>
+
+
+
+            <div id="mission-log">
+
+                <h3>
+                    📋 Mission Timeline
+                </h3>
+
+
+                <div id="mission-events">
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+        <div class="top-bar">
+
+            <span id="timer"></span>
+
+        </div>
+
+
+
+        <div id="stage-content"></div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+<script src="js/data.js"></script>
+<script src="js/stage1.js"></script>
+<script src="js/stage2.js"></script>
+<script src="js/stage3.js"></script>
+<script src="js/stage4.js"></script>
+<script src="js/final.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/patient.js"></script>
+<script src="js/hud.js"></script>
+<script src="js/dialogue.js"></script>
+<script src="js/mission.js"></script>
+<script src="js/report.js"></script>
+<script src="js/game.js"></script>
+
+
+</body>
+
+</html>

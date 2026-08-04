@@ -1,0 +1,179 @@
+.ecg-card{
+
+    text-align:center;
+
+}
+
+
+
+.monitor{
+
+    background:#020617;
+
+    border:2px solid #22c55e;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    margin:25px auto;
+
+    max-width:650px;
+
+    box-shadow:
+    0 0 25px rgba(34,197,94,.35);
+
+}
+
+
+
+.monitor-header{
+
+    color:#22c55e;
+
+    font-weight:bold;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.ecg-screen{
+
+    background:#000;
+
+    border-radius:10px;
+
+    padding:15px;
+
+    overflow:hidden;
+
+}
+
+
+
+.ecg-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#22c55e;
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.critical-text{
+
+    color:#ef4444;
+
+}
+
+
+
+.ecg-wave{
+
+    width:100%;
+
+    height:150px;
+
+}
+
+
+
+.ecg-wave polyline{
+
+    fill:none;
+
+    stroke:#ef4444;
+
+    stroke-width:4;
+
+    stroke-linejoin:round;
+
+    stroke-linecap:round;
+
+    animation:
+    moveECG 2s linear infinite;
+
+}
+
+
+
+@keyframes moveECG{
+
+
+    from{
+
+        transform:
+        translateX(0);
+
+    }
+
+
+    to{
+
+        transform:
+        translateX(-80px);
+
+    }
+
+}
+
+
+
+.monitor-status{
+
+    margin-top:15px;
+
+    color:#cbd5e1;
+
+}
+
+
+
+.ecg-options{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    max-width:400px;
+
+    margin:auto;
+
+}
+
+
+
+.ecg-option{
+
+    background:#1e293b;
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    border:none;
+
+}
+
+
+
+.ecg-option:hover{
+
+    background:#2563eb;
+
+}
